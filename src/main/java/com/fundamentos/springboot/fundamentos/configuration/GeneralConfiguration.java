@@ -5,10 +5,12 @@ import com.fundamentos.springboot.fundamentos.bean.MyBeanWithPropertiesImplement
 import com.fundamentos.springboot.fundamentos.pojo.UserPojo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
+import javax.sql.DataSource;
 import java.security.SecureRandom;
 
 @Configuration
@@ -28,4 +30,14 @@ public class GeneralConfiguration {
         return new MyBeanWithPropertiesImplement(name, apellido);
     }
 
+    //aparentemente desde aqui comienza mi configuracion de base de datos
+    @Bean
+    public DataSource dataSource(){
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.driverClassName("org.h2.Driver");
+        dataSourceBuilder.url("jdbc:h2:men:testdb");
+        dataSourceBuilder.username("SA");
+        dataSourceBuilder.password("");
+        return dataSourceBuilder.build();
+    }
 }
