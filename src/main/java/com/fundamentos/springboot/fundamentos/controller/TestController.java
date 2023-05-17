@@ -10,7 +10,7 @@ import com.fundamentos.springboot.fundamentos.bean.MyBeanWithProperties;
 @Controller     //estereotipo
 @RestController
 public class TestController {
-    @RequestMapping("/")    //anotacion para aceptar todas solicitudad http
+    @RequestMapping//("/")    //anotacion para aceptar todas solicitudad http
     //@RequestMapping("/test")
 
     @ResponseBody    //responder un cuerpo a nivel de servicio

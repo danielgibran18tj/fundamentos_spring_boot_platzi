@@ -33,9 +33,9 @@ public class GeneralConfiguration {
     //aparentemente desde aqui comienza mi configuracion de base de datos
     @Bean
     public DataSource dataSource(){
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();   //constructor de base de datos
         dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:men:testdb");
+        dataSourceBuilder.url("jdbc:h2:mem:testdb");
         dataSourceBuilder.username("SA");
         dataSourceBuilder.password("");
         return dataSourceBuilder.build();
