@@ -12,12 +12,12 @@ import java.util.List;
 public class User {
     @Id
     @Column(name = "id_user", nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 50)
     private String name;
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String email;
     private LocalDate birthDate;
 
