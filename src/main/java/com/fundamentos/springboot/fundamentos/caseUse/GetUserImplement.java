@@ -6,7 +6,7 @@ import com.fundamentos.springboot.fundamentos.service.UserService;
 import java.util.List;
 
 public class GetUserImplement implements GetUser {
-    private UserService userService;
+    private UserService userService;        //repositorio donde estan todos los usuarios
 
     public GetUserImplement(UserService userService) {
         this.userService = userService;
@@ -14,6 +14,6 @@ public class GetUserImplement implements GetUser {
 
     @Override
     public List<User> getAll() {
-        return userService.getAllUsers();
+        return userService.getAllUsers();   //retribuye tooodos los usuarios
     }
 }
