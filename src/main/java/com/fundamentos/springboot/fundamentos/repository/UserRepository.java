@@ -5,6 +5,9 @@ import com.fundamentos.springboot.fundamentos.entity.User;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListPagingAndSortingRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository     //estereotipo usado para usar "UserRepository" como dependencia
-public interface UserRepository extends JpaRepository<User, Long> {
-
+public interface UserRepository extends PagingAndSortingRepository/*JpaRepository*/<User, Long>, CrudRepository<User, Long> {       //modificacion para Pagination con Spring Boot
     @Query("Select u from User u WHERE u.email=?1 ")  //consulta jpql
     Optional<User> findByUserEmail(String email);   // encontrar usuario por email
 
@@ -37,4 +39,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
         + " and u.email=:parametroEmail ")      //cada espacio y letra es importante porque es la direccion que se le esta dando al JPQL
     Optional<UserDto> getAllByBirthDateAndEmail(@Param("parametroFecha") LocalDate date,
                                                 @Param("parametroEmail") String email);
+    List<User> findAll();
 }
