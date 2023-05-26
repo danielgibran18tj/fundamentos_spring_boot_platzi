@@ -18,7 +18,7 @@ import java.security.SecureRandom;
 @PropertySource("classpath:connection.properties")
 @EnableConfigurationProperties(UserPojo.class)
 public class GeneralConfiguration {
-    @Value("${value.name}")
+    @Value("${value.name}")     //value, sirve para representar valores a nivel de properties
     private String name;
 
     @Value("${value.apellido}")
@@ -30,7 +30,7 @@ public class GeneralConfiguration {
     @Value("${jdbc.url}")
     private String jdbcUrl;
 
-    @Value("${driver}")
+    @Value("${driver}")     //valor de archivos de propiedades
     private String driver;
 
     @Value("${username}")
